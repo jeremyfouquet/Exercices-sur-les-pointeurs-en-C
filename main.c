@@ -10,19 +10,22 @@
 #include <string.h> // strlen()
 
 #define str char *
+#define variante1
 
+char chaine[100];
 char var1, var2[3], var3[] = "hello";
-
-
 void exercice_B_1(const str) ; // prototyp
-void exercice_B_2(const str) ; // prototyp
+void exercice_B_2_1(const str) ; // prototyp
+void exercice_B_2_2(const str) ; // prototyp
 void exercice_B_3(const str) ; // prototyp
+void parcoureLaChaine(void) ; // prototyp
 
 int main(int argc, const char * argv[]) {
     printf("%s\n", "B. Exercices sur les pointeurs");
     puts("");
     exercice_B_1("B.1 Adresses");
-    exercice_B_2("B.2 Pointeurs sur chaînes");
+    exercice_B_2_1("B.2 Pointeurs sur chaînes");
+    exercice_B_2_2("B.2 Pointeurs sur chaînes");
     exercice_B_3("B.3 Allocation dynamique");
     return 0;
 }
@@ -36,12 +39,14 @@ void exercice_B_1(const str titre) {
     puts("");
     
     printf("%s\n", "Même s'il n'y a ni initialisation ni affectation, le faite de declarer la variable lui alloue une adresse obligatoirement donc celle ci peut afficher son adresse");
+    puts("");
     printf("%s\n", "Si on exécute plusieurs fois le même programme l'adresse risque d'être modifié avec ou sans initialisation");
     char a;
     char char1 = 'e', char2[3], char3[] = "hello";
     int int1, int2[3], int3[] = {1, 2, 3};
     void * void1;
     char * p1 = &var1;
+    puts("");
     printf("a : %p\n", &a);
     printf("var1 : %p\n", &var1);
     printf("p1 : %p\n", p1);
@@ -56,15 +61,37 @@ void exercice_B_1(const str titre) {
     printf("char1 : %p\n",  &char1);
     char1 = 'a';
     printf("char1 : %p\n",  &char1);
+    puts("");
 }
-void exercice_B_2(const str titre) {
+void exercice_B_2_1(const str titre) {
     printf("%s\n", titre);
     puts("");
     printf("%s\n", "Écrire un programme recevant une chaîne de caractères sur la ligne de commande et affichant chaque caractère de la chaîne sur une ligne, avec deux variantes ; le choix des variantes étant fait à l’aide d’un #define au début du programme et d’un #ifdef.");
-    printf("%s\n", "Variante 1 : utilisez le nom de la chaîne de caractères pour la parcourir ;");
-    printf("%s\n", "Variante 2 : utilisez un pointeur libre incrémenté pour parcourir la chaîne.");
+    puts("");
+    printf("%s\n", "Saisissez votre chaine : ");
+    if(fgets(chaine, sizeof(chaine), stdin) != NULL) {
+        parcoureLaChaine();
+    }
+    else printf("Vous avez fait une erreur lors de la saisie.\n");
+    puts("");
+}
+
+void exercice_B_2_2(const str titre) {
+    printf("%s\n", titre);
+    puts("");
     printf("%s\n", "Écrire un programme qui alloue un pointeur sur une chaîne de caractères constante construite avec l’opérateur ”...” et une table sur la même chaîne. Comparez les adresses des données (constante et variable). Tentez de modifier la chaîne dans les deux cas. Expliquez ce que vous avez observé.");
     puts("");
+}
+
+void parcoureLaChaine() {
+    #ifdef variante1
+    puts("Variante 1 : utilisez le nom de la chaîne de caractères pour la parcourir.");
+    for (int i = 0; i< strlen(chaine); i++)printf("%c", chaine[i]);
+    #else
+    puts("Variante 2 : utilisez un pointeur libre incrémenté pour parcourir la chaîne.");
+    str P = & chaine[0];
+    for (int i = 0; i < strlen(chaine); i++) printf("%c", * P++);
+    #endif
 }
 void exercice_B_3(const str titre) {
     printf("%s\n", titre);
