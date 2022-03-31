@@ -80,6 +80,9 @@ void exercice_B_2_2(const str titre) {
     printf("%s\n", titre);
     puts("");
     printf("%s\n", "Écrire un programme qui alloue un pointeur sur une chaîne de caractères constante construite avec l’opérateur ”...” et une table sur la même chaîne. Comparez les adresses des données (constante et variable). Tentez de modifier la chaîne dans les deux cas. Expliquez ce que vous avez observé.");
+    const char maChaine[] = "ma chaine de caractere";
+    char * P = &maChaine;
+    char maTable[] = "ma chaine de caractere";
     puts("");
 }
 
