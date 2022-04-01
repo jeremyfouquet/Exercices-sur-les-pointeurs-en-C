@@ -23,10 +23,10 @@ void parcoureLaChaine(void) ; // prototyp
 int main(int argc, const char * argv[]) {
     printf("%s\n", "B. Exercices sur les pointeurs");
     puts("");
-    exercice_B_1("B.1 Adresses");
-    exercice_B_2_1("B.2 Pointeurs sur chaînes");
+//    exercice_B_1("B.1 Adresses");
+//    exercice_B_2_1("B.2 Pointeurs sur chaînes");
     exercice_B_2_2("B.2 Pointeurs sur chaînes");
-    exercice_B_3("B.3 Allocation dynamique");
+//    exercice_B_3("B.3 Allocation dynamique");
     return 0;
 }
 
@@ -80,9 +80,30 @@ void exercice_B_2_2(const str titre) {
     printf("%s\n", titre);
     puts("");
     printf("%s\n", "Écrire un programme qui alloue un pointeur sur une chaîne de caractères constante construite avec l’opérateur ”...” et une table sur la même chaîne. Comparez les adresses des données (constante et variable). Tentez de modifier la chaîne dans les deux cas. Expliquez ce que vous avez observé.");
-    const char maChaine[] = "ma chaine de caractere";
-    char * P = &maChaine;
-    char maTable[] = "ma chaine de caractere";
+    const char maChaine[] = "Rouge";
+    char * P = & maChaine;
+    char maTable[] = "Rouge";
+    puts("premier cas");
+    printf("Adresse maChaine : %p %s\n", maChaine, maChaine);
+    printf("Adresse P : %p %s\n", P, P);
+    printf("Adresse maTable : %p %s\n", maTable, maTable);
+    printf("%s\n", "Les adresses des constantes ne sont pas les mêmes que la variable");
+//    maChaine = "Bleu";
+    * P = 'r';
+    maTable[0] = 'M';
+    maTable[1] = 'a';
+    maTable[2] = 'r';
+    maTable[3] = 'o';
+    maTable[4] = 'n';
+    printf("Adresse maChaine : %p %s\n", maChaine, maChaine);
+    printf("Adresse P : %p %s\n", P, P);
+    printf("Adresse maTable : %p %s\n", maTable, maTable);
+    P = & maTable;
+    printf("Adresse maChaine : %p %s\n", maChaine, maChaine);
+    printf("Adresse P : %p %s\n", P, P);
+    printf("Adresse maTable : %p %s\n", maTable, maTable);
+
+
     puts("");
 }
 
