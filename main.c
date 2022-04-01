@@ -26,9 +26,9 @@ int compte_mots(const str); // prototyp
 int main(int argc, const char * argv[]) {
     printf("%s\n", "B. Exercices sur les pointeurs");
     puts("");
-//    exercice_B_1("B.1 Adresses");
-//    exercice_B_2_1("B.2 Pointeurs sur chaînes");
-//    exercice_B_2_2("B.2 Pointeurs sur chaînes");
+    exercice_B_1("B.1 Adresses");
+    exercice_B_2_1("B.2 Pointeurs sur chaînes");
+    exercice_B_2_2("B.2 Pointeurs sur chaînes");
     exercice_B_3("B.3 Allocation dynamique");
     return 0;
 }
